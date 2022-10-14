@@ -1,0 +1,36 @@
+<br>
+
+
+<mat-table [dataSource]="ELEMENT_DATA">
+    <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef appFuente20>Nombre</mat-header-cell>
+        <mat-cell *matCellDef="let alumno"> {{ alumno | apellidoNombre }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edad">
+        <mat-header-cell *matHeaderCellDef appFuente20>Edad</mat-header-cell>
+        <mat-cell *matCellDef="let alumno"> {{alumno.edad}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="editar">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let alumno">
+            <mat-icon class="mat-18 color-red cursor-hand" (click)="openDialog(alumno)">edit</mat-icon>   
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="eliminar">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let alumno">
+            <mat-icon class="mat-18 color-red cursor-hand" (click)="eliminar(alumno.id)">delete</mat-icon>   
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</mat-table>
+<br>
+<div class="d-flex justify-content-left w-100">
+    <button mat-raised-button (click)="openDialog()">Agregar Alumno</button>
+</div>

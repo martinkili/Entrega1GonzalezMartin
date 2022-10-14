@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Crear Alumno</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formAlumno">
+    <mat-form-field>
+      <mat-label appFuente20>Apellido</mat-label>
+      <input matInput  formControlName="apellido" placeholder="Ingrese un Apellido">
+    </mat-form-field>
+    <br>
+    <mat-form-field >
+        <mat-label appFuente20>Nombre</mat-label>
+        <input matInput  formControlName="nombre" placeholder="Ingrese un nombre">
+      </mat-form-field>
+      <br>
+    <mat-form-field>
+        <mat-label appFuente20>Edad</mat-label>
+        <input matInput  formControlName="edad" placeholder="Ingrese un nombre">
+      </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="cancelar">Cancelar</button>
+  <button mat-button [disabled]="!formAlumno.valid === true" (click)="grabar()">Guardar</button>
+</div>
