@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ListaAlumnos } from 'src/app/models/alumno';
 import { AltaAlumnosComponent } from '../alta-alumnos/alta-alumnos.component';
+import { TitleStrategy } from '@angular/router';
 
 
 @Component({
@@ -53,7 +54,6 @@ export class ListaAlumnosComponent implements OnInit {
       
 
   alta(row_obj: any){
-    
     this.dataInicial.push({
       id: this.dataInicial.length + 1,
       ... row_obj,
@@ -64,16 +64,11 @@ export class ListaAlumnosComponent implements OnInit {
 
   editar(row_obj: any, row_id: any){
     
-    this.dataInicial = this.dataInicial.filter((value,key)=>{
-      
-      if(value.id == row_id){
-        value.apellido = row_obj.apellido;
-        value.nombre = row_obj.nombre;
-        value.edad = row_obj.edad;
-        this.ELEMENT_DATA.data = this.dataInicial
-      }
-      return true;
-    });
+    let position = this.dataInicial.findIndex(alumno => alumno.id == row_id)
+    this.dataInicial[position].apellido = row_obj.apellido
+    this.dataInicial[position].nombre = row_obj.nombre
+    this.dataInicial[position].edad = row_obj.edad
+    
   }
 
   eliminar(id: number) {

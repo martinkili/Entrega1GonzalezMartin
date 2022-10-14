@@ -11,6 +11,7 @@ import { Alumno } from 'src/app/models/alumno';
 export class AltaAlumnosComponent implements OnInit {
 
   idAlumno: any = 0
+  titulo: string = "Crear Alumno"
 
   formAlumno: FormGroup = this.fb.group(
     {
@@ -30,6 +31,7 @@ export class AltaAlumnosComponent implements OnInit {
         if (datos.id > 0)
         {
           this.idAlumno = datos.id
+          this.titulo = "Editar Alumno"
           this.formAlumno.setValue
           ({
             apellido: datos.apellido,
