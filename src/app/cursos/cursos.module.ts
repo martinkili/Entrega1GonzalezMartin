@@ -7,7 +7,7 @@ import { CursosCrearComponent } from './components/cursos-crear/cursos-crear.com
 import { CursosEditarComponent } from './components/cursos-editar/cursos-editar.component';
 import { CursosDetalleComponent } from './components/cursos-detalle/cursos-detalle.component';
 import { CursosService } from './services/cursos.service';
-import { SharedModule } from '../shared/shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
