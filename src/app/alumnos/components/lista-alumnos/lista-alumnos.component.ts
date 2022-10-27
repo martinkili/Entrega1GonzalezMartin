@@ -3,7 +3,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ListaAlumnos } from 'src/app/models/alumno';
 import { AltaAlumnosComponent } from '../alta-alumnos/alta-alumnos.component';
-import { TitleStrategy } from '@angular/router';
 
 
 @Component({

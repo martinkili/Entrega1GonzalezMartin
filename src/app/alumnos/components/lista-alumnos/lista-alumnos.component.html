@@ -4,7 +4,7 @@
 <mat-table [dataSource]="ELEMENT_DATA">
     <ng-container matColumnDef="nombre">
         <mat-header-cell *matHeaderCellDef appFuente20>Nombre</mat-header-cell>
-        <mat-cell *matCellDef="let alumno"> {{ alumno | apellidoNombre }} </mat-cell>
+        <mat-cell *matCellDef="let alumno"> {{ alumno.apellido + ' ' + alumno.nombre }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="edad">

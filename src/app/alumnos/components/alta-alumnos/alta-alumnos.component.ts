@@ -8,6 +8,7 @@ import { Alumno } from 'src/app/models/alumno';
   templateUrl: './alta-alumnos.component.html',
   styleUrls: ['./alta-alumnos.component.css']
 })
+
 export class AltaAlumnosComponent implements OnInit {
 
   idAlumno: any = 0

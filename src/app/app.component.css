@@ -16,3 +16,7 @@
   .grid-students{
     grid-area: main;
   }
+
+  .espacio{
+    flex: 1 1 auto;
+}

@@ -3,33 +3,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material/material.module';
-import { ListaAlumnosComponent } from './components/alumnos/lista-alumnos/lista-alumnos.component';
-import { AltaAlumnosComponent } from './components/alumnos/alta-alumnos/alta-alumnos.component';
-import { MenuComponent } from './components/menu/menu.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MenuComponent } from './core/components/menu/menu.component';
+import { ToolbarComponent } from './core/components/toolbar/toolbar.component';
 import { ApellidoNombrePipe } from './apellido-nombre.pipe';
-import { Fuente20Directive } from './fuente20.directive'
+import { Fuente20Directive } from './fuente20.directive';
+import { SharedModule } from './shared/shared/shared.module';
+import { CoreModule } from './core/core/core.module';
+import { AppRoutingModule } from './app-routing.module';
+import { PaginaNoEncontradaComponent } from './core/components/pagina-no-encontrada/pagina-no-encontrada.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListaAlumnosComponent,
-    AltaAlumnosComponent,
-    MenuComponent,
     ToolbarComponent,
+    MenuComponent,
     ApellidoNombrePipe,
-    Fuente20Directive
+    Fuente20Directive,
+    PaginaNoEncontradaComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     NgbModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    
+    SharedModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
