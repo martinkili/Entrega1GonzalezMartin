@@ -17,7 +17,6 @@ import { SharedModule } from '../shared/shared.module';
     CursosDetalleComponent
   ],
   imports: [
-    CommonModule,
     CursosRoutingModule,
     SharedModule
   ],

@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CursosModule } from 'src/app/cursos/cursos.module';
-import { MenuComponent } from '../components/menu/menu.component';
-import { ToolbarComponent } from '../components/toolbar/toolbar.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { AutenticacionService } from '../services/autenticacion.service';
 
 @NgModule({
   declarations: [
-    
   ],
   imports: [
-    CommonModule
+    
+    SharedModule
+  ],
+  providers:[
+    AutenticacionService
   ]
 })
 export class CoreModule { }
