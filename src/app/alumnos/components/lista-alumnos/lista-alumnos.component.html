@@ -1,5 +1,4 @@
-<br>
-
+<h1>Lista de Alumnos</h1>
 
 <mat-table [dataSource]="ELEMENT_DATA">
     <ng-container matColumnDef="nombre">
@@ -15,14 +14,18 @@
     <ng-container matColumnDef="editar">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let alumno">
-            <mat-icon class="mat-18 color-red cursor-hand" (click)="openDialog(alumno)">edit</mat-icon>   
+            <button mat-icon-button>
+                <mat-icon (click)="openDialog(alumno)">edit</mat-icon>
+            </button>
         </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="eliminar">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let alumno">
-            <mat-icon class="mat-18 color-red cursor-hand" (click)="eliminar(alumno.id)">delete</mat-icon>   
+            <button mat-icon-button>
+                <mat-icon (click)="eliminar(alumno.id)">delete</mat-icon>   
+            </button>
         </mat-cell>
     </ng-container>
 

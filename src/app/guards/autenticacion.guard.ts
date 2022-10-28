@@ -20,17 +20,17 @@ export class AutenticacionGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
+      
       return this.autenticacionService.obtenerUsuarioSesion().pipe(
-        map((usuario: Usuario) => {
-          console.log('guard: ', usuario)
-          if(usuario.Id > 0){
-            return true;
-          }else{
-            this.router.navigate(['login']);
-            return false;
-          }
-        })
+         map((usuario: Usuario) => {
+           console.log('guard: ', usuario)
+           if(Object.keys(usuario).length == 0){
+             this.router.navigate(['login']);
+             return false;
+           }else{
+             return true;
+           }
+         })
       );
 
 

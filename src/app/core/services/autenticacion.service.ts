@@ -11,9 +11,7 @@ usuarios = ListaUsuarios;
 usuarioSesionSubject!: BehaviorSubject<Usuario>;
 
   constructor() {
-    const usuarioSesion: Usuario = {
-      Id: 0
-    };
+    const usuarioSesion: Usuario = {}
     
     this.usuarioSesionSubject = new BehaviorSubject(usuarioSesion);
   }
@@ -21,13 +19,14 @@ usuarioSesionSubject!: BehaviorSubject<Usuario>;
   login(usuario: string, contrasena: string){
 
     var usuarioEncontrado = this.usuarios.filter( u  => u.Usuario == usuario && u.Contraseña == contrasena)[0]
-    const sesion: Usuario = {
+    console.log(usuarioEncontrado);
+    const usuarioSesion: Usuario = {
       Id : usuarioEncontrado.Id,
       Nombre: usuarioEncontrado.Nombre,
       Admin: usuarioEncontrado.Admin
     }
-    console.log("sesion ", sesion)
-    this.usuarioSesionSubject.next(sesion);
+    console.log("sesion ", usuarioSesion)
+    this.usuarioSesionSubject.next(usuarioSesion);
   }
 
   obtenerUsuarioSesion(): Observable<Usuario>{
