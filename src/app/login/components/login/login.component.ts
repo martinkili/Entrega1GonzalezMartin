@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private autenticacionService: AutenticacionService,
+    private router: Router
     
   ) { 
 
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.autenticacionService.login(this.formulario.value.usuario, this.formulario.value.contrasena)
+    this.router.navigate(['cursos'])
   }
   
 }

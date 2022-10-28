@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PaginaNoEncontradaComponent } from './core/components/pagina-no-encontrada/pagina-no-encontrada.component';
 import { AutenticacionGuard } from './guards/autenticacion.guard';
-import { LoginComponent } from './login/components/login/login.component';
 
 const routes: Routes = [
   { path: 'login', 
@@ -22,6 +21,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

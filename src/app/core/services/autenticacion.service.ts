@@ -1,36 +1,46 @@
 import { Injectable } from '@angular/core';
+import { provideRouter } from '@angular/router';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { ListaUsuarios, Usuario } from 'src/app/models/usuario';
+import { Sesion } from 'src/app/models/sesion';
 
-@Injectable({ providedIn: 'root' })
+@Injectable() //{ providedIn: 'root' }
 export class AutenticacionService {
 
 usuarios = ListaUsuarios;
-
-usuarioSesionSubject!: BehaviorSubject<Usuario>;
+sesion: Sesion = {
+  islogged: false,
+};
+sesionSubject!: BehaviorSubject<Sesion>;
 
   constructor() {
-    const usuarioSesion: Usuario = {}
-    
-    this.usuarioSesionSubject = new BehaviorSubject(usuarioSesion);
+    this.sesionSubject = new BehaviorSubject(this.sesion);
   }
 
   login(usuario: string, contrasena: string){
 
+    
     var usuarioEncontrado = this.usuarios.filter( u  => u.Usuario == usuario && u.Contraseña == contrasena)[0]
-    console.log(usuarioEncontrado);
-    const usuarioSesion: Usuario = {
-      Id : usuarioEncontrado.Id,
-      Nombre: usuarioEncontrado.Nombre,
-      Admin: usuarioEncontrado.Admin
+
+    if (usuarioEncontrado != null){
+
+      this.sesion = {
+
+        islogged: true,
+        usuario: usuarioEncontrado
+        
+      }
+
     }
-    console.log("sesion ", usuarioSesion)
-    this.usuarioSesionSubject.next(usuarioSesion);
+    
+    
+    this.sesionSubject.next(this.sesion);
+    
   }
 
-  obtenerUsuarioSesion(): Observable<Usuario>{
-    return this.usuarioSesionSubject.asObservable();
+  obtenerSesion(): Observable<Sesion>{
+    return this.sesionSubject.asObservable();
   }
 
 }
