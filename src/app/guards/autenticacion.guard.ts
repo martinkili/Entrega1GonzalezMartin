@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot,  UrlTree } from '@angular/router';
 import { map, Observable, Subscription } from 'rxjs';
-import { AutenticacionService } from '../core/services/autenticacion.service';
+import { SesionService } from '../core/services/sesion.service';
 import { Sesion } from '../models/sesion';
-import { Usuario } from '../models/usuario';
 
 @Injectable()
 
@@ -11,7 +10,7 @@ import { Usuario } from '../models/usuario';
 export class AutenticacionGuard implements CanActivate {
 
   constructor(
-    private autenticacionService : AutenticacionService,
+    private sesionService : SesionService,
     private router: Router) {
   
       
@@ -21,22 +20,17 @@ export class AutenticacionGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      return this.autenticacionService.obtenerSesion().pipe(
+      return this.sesionService.obtenerSesion().pipe(
 
         map((s: Sesion) => { 
           
           if (s.islogged){
-              console.log(s)
               return true;
             }else{
               this.router.navigate(['login'])
               return false;
             }
-        
         })
-
       )
-
   }
-  
 }

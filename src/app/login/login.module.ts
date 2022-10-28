@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from '../shared/shared.module';
+import { AutenticacionService } from '../core/services/autenticacion.service';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   providers:[
-    
+    AutenticacionService
   ]
 })
 

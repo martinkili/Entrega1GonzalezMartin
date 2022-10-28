@@ -11,10 +11,14 @@ const routes: Routes = [
     loadChildren: () => import('./cursos/cursos.module').then((m) => m.CursosModule),
     canActivate: [AutenticacionGuard]
   },
-   { 
-     path: 'alumnos',
-     loadChildren: () => import('./alumnos/alumnos.module').then((m) => m.AlumnosModule)
-   },
+  { 
+    path: 'alumnos',
+    loadChildren: () => import('./alumnos/alumnos.module').then((m) => m.AlumnosModule)
+  },
+  { 
+    path: 'usuarios',
+    loadChildren: () => import('./usuarios/usuarios.module').then((m) => m.UsuariosModule)
+  },
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: '**', component: PaginaNoEncontradaComponent }
 ];

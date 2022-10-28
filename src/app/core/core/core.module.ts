@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
+import { AdminGuard } from 'src/app/guards/admin.guard';
 import { AutenticacionGuard } from 'src/app/guards/autenticacion.guard';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { AutenticacionService } from '../services/autenticacion.service';
+import { SesionService } from '../services/sesion.service';
 
 @NgModule({
   declarations: [
@@ -10,8 +11,9 @@ import { AutenticacionService } from '../services/autenticacion.service';
     SharedModule
   ],
   providers:[
-    AutenticacionService,
-    AutenticacionGuard
+    SesionService,
+    AutenticacionGuard,
+    AdminGuard
   ]
 })
 export class CoreModule { }

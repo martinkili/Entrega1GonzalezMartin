@@ -1,18 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Entrega Final</a>
-      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button> -->
       <div class="collapse navbar-collapse" id="navbarColor01">
       </div>
       <div *ngIf="sesion$ | async as sesion" class="text-white">
         <div *ngIf="sesion.islogged">
           {{ 'Usuario: ' + sesion.usuario?.Nombre }}
+          <button mat-icon-button>
+            <mat-icon (click)="logout()">logout</mat-icon>
+          </button>
         </div>
-        
+        <div *ngIf="!sesion.islogged">
+          <button mat-icon-button>
+            <mat-icon routerLink="login">login</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
-    
-  </nav>
+</nav>
 

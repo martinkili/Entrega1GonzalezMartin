@@ -11,6 +11,7 @@ import { CoreModule } from './core/core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { PaginaNoEncontradaComponent } from './core/components/pagina-no-encontrada/pagina-no-encontrada.component';
 import { MaterialModule } from './material/material.module';
+import { UsuariosListadoComponent } from './usuarios/components/usuarios-listado/usuarios-listado.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MaterialModule } from './material/material.module';
     MenuComponent,
     ApellidoNombrePipe,
     Fuente20Directive,
-    PaginaNoEncontradaComponent
+    PaginaNoEncontradaComponent,
+    UsuariosListadoComponent
   ],
   imports: [
     AppRoutingModule,
