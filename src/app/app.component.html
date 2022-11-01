@@ -1,16 +1,25 @@
-<div class="row">
-  <div class="col-md-12">
-    <app-menu></app-menu>
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-12">
+      <app-menu></app-menu>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-2">
-    <app-toolbar></app-toolbar>
+
+  <div class="row">
+    <div class="col-2">
+      <div style="width:15%;height: 100%;position: absolute;">
+        <app-toolbar></app-toolbar>
+      </div>
+    </div>
+    <div class="col-10">
+      <div style="height: 100%;position: relative;">
+        <br>
+        <router-outlet ></router-outlet>
+      </div>
+    </div>
   </div>
-  <div class="col-md-9">
-    <br>
-    <router-outlet ></router-outlet>
-  </div>
+
 </div>
 
 
