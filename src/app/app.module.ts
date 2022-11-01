@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MenuComponent } from './core/components/menu/menu.component';
 import { ToolbarComponent } from './core/components/toolbar/toolbar.component';
 import { ApellidoNombrePipe } from './apellido-nombre.pipe';
 import { Fuente20Directive } from './fuente20.directive';
@@ -18,11 +17,10 @@ import { UsuariosListadoComponent } from './usuarios/components/usuarios-listado
   declarations: [
     AppComponent,
     ToolbarComponent,
-    MenuComponent,
     ApellidoNombrePipe,
     Fuente20Directive,
     PaginaNoEncontradaComponent,
-    UsuariosListadoComponent
+    UsuariosListadoComponent,
   ],
   imports: [
     AppRoutingModule,
