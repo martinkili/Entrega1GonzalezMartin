@@ -16,9 +16,10 @@ import { Router } from '@angular/router';
 export class ListaAlumnosComponent implements OnInit {
 
   dataInicial!: Alumno[];
+  listaAlumnos!: MatTableDataSource<Alumno>
 
   //ELEMENT_DATA = new MatTableDataSource(ListaAlumnos)
-  displayedColumns: string[] = ['nombre', 'email', 'detalle', 'editar', 'eliminar'];
+  displayedColumns: string[] = ['nombre', 'detalle', 'editar', 'eliminar'];
 
   constructor(
     private dialog: MatDialog,
@@ -27,63 +28,38 @@ export class ListaAlumnosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.alumnosService.getAll().subscribe((data) => (this.dataInicial = data.sort(
-      (a, b) => (a.Apellidos < b.Apellidos ? -1 : 1)
-      )));
+    this.getAll()
   }
 
   openDialog(obj?: any, id?: any) {
 
     let dialog = this.dialog.open(
-      AltaAlumnosComponent,
+      AltaAlumnosComponent,      
       {
-         width: '50%',
+        width: '50%',
         height: '50%',
         data : obj,
         id: id,
-      });
-
-    dialog.beforeClosed().subscribe(res => {
-
-      if (res != undefined && res.data != undefined){
-        if(res.id > 0){
-          this.editar(res.data, res.id)
-        }else{
-          this.alta(res.data)
-        }
       }
+    )
 
-    })
+    dialog.afterClosed().subscribe(() => this.getAll())
 
   }
       
-
-  alta(row_obj: any){
-    this.dataInicial.push({
-      id: this.dataInicial.length + 1,
-      ... row_obj,
-    });
-
-    //this.ELEMENT_DATA.data = this.dataInicial
+  getAll(){
+    this.alumnosService.getAll().subscribe((data) => 
+    (this.dataInicial = data.sort((a, b) => (a.Apellidos < b.Apellidos ? -1 : 1)))
+    );
   }
 
-  editar(row_obj: any, row_id: any){
-    
-    // let position = this.dataInicial.findIndex(alumno => alumno.id == row_id)
-    // this.dataInicial[position].apellido = row_obj.apellido
-    // this.dataInicial[position].nombre = row_obj.nombre
-    // this.dataInicial[position].edad = row_obj.edad
-    
-  }
-
+  
   eliminar(id: number) {
-    // let position = this.dataInicial.findIndex(alumno => alumno.id == id)
-    // this.dataInicial.splice(position, 1)
-    // this.ELEMENT_DATA.data = this.dataInicial
+    this.alumnosService.delete(id)
+    this.getAll()
   }
 
   detalle(id: number){
-
     this.router.navigate(["Alumnos/Detalle/" + id])
   }
 }

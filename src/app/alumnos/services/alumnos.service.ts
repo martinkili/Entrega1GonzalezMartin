@@ -23,4 +23,12 @@ export class AlumnosService {
     return this.clienteHttp.post(alumno, 'Alumnos')
   }
 
+  put(alumno: Alumno){
+    return this.clienteHttp.put(alumno, 'Alumnos/' + alumno.Id)
+  }
+
+  delete(id: number){
+    return this.clienteHttp.delete('Alumnos/' + id)
+  }
+
 }

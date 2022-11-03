@@ -5,6 +5,7 @@ import { AltaAlumnosComponent } from './components/alta-alumnos/alta-alumnos.com
 import { ListaAlumnosComponent } from './components/lista-alumnos/lista-alumnos.component';
 import { AlumnosService } from './services/alumnos.service';
 import { AlumnosDetalleComponent } from './components/alumnos-detalle/alumnos-detalle.component';
+import { TitleCasePipe } from '@angular/common';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AlumnosDetalleComponent } from './components/alumnos-detalle/alumnos-de
     AlumnosRoutingModule
   ],
   providers: [
-    AlumnosService
+    AlumnosService,
+    TitleCasePipe
   ]
 })
 export class AlumnosModule { }

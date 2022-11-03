@@ -16,7 +16,10 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label appFuente20>Fecha de Nacimiento</mat-label>
-      <input matInput type="Date" formControlName="fechaDeNacimiento">
+      <!-- <input matInput type="Date" formControlName="fechaDeNacimiento"> -->
+      <input matInput [matDatepicker]="fechaDeNacimiento" formControlName="fechaDeNacimiento">
+      <mat-datepicker-toggle matSuffix [for]="fechaDeNacimiento"></mat-datepicker-toggle>
+      <mat-datepicker #fechaDeNacimiento></mat-datepicker>
     </mat-form-field>
   </form>
 </div>

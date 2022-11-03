@@ -10,11 +10,6 @@
         <mat-cell *matCellDef="let alumno"> {{ alumno.Apellidos + ' ' + alumno.Nombre }} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef appFuente20>Email</mat-header-cell>
-        <mat-cell *matCellDef="let alumno"> {{alumno.Email}} </mat-cell>
-    </ng-container>
-
     <ng-container matColumnDef="detalle">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let alumno">

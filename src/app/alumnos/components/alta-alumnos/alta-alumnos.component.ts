@@ -1,5 +1,6 @@
+import { DatePipe, formatDate, getLocaleDateFormat, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { Component, Inject, OnInit, Optional } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Alumno } from 'src/app/models/alumno';
@@ -18,10 +19,10 @@ export class AltaAlumnosComponent implements OnInit {
 
   formAlumno: FormGroup = this.fb.group(
     {
-      apellidos:[null,Validators.required],
-      nombre:[null,Validators.required],
-      email:[null,Validators.required],
-      fechaDeNacimiento:[null,Validators.required],
+      apellidos:new FormControl(null,[Validators.required]),
+      nombre: new FormControl(null,[Validators.required]),
+      email:new FormControl(null,[Validators.required]),
+      fechaDeNacimiento: new FormControl(),
     }
   )
 
@@ -30,7 +31,7 @@ export class AltaAlumnosComponent implements OnInit {
     @Optional() @Inject(MAT_DIALOG_DATA) public datos: Alumno,
     private fb:FormBuilder,
     private alumnosService : AlumnosService,
-    private router: Router
+    private titleCasePipe : TitleCasePipe,
   ){ 
       if (datos != undefined)
       {
@@ -53,7 +54,20 @@ export class AltaAlumnosComponent implements OnInit {
   }
 
   grabar() {
-    this.dialogRef.close(this.post())
+
+    console.log(this.datos)
+    if (this.datos != undefined)
+    {
+      if (this.datos.Id > 0)
+      {
+        this.put()
+      }
+
+    }else{
+      this.post()
+    }
+
+    this.dialogRef.close()
   }
 
   cancelar(){
@@ -63,15 +77,31 @@ export class AltaAlumnosComponent implements OnInit {
   post(){
 
     const alumno : Alumno = {
-      Id: Math.round(Math.random()*1000),
-      Nombre: this.formAlumno.value.Nombre,
-      Apellidos: this.formAlumno.value.Apellidos,
-      Email: this.formAlumno.value.Email,
-      FechaDeNacimiento: this.formAlumno.value.FechaDeNacimiento,
+      
+      Nombre: this.titleCasePipe.transform(this.formAlumno.value.nombre),
+      Apellidos: this.titleCasePipe.transform(this.formAlumno.value.apellidos),
+      Email: this.formAlumno.value.email,
+      FechaDeNacimiento: this.formAlumno.value.fechaDeNacimiento,
+      Avatar: "",
+      Id: Math.round(Math.random()*1000)
     }
-    
+    console.log(alumno.Id)
     this.alumnosService.post(alumno)
+  }
 
-    this.router.navigate(['Alumnos']);
+  put(){
+
+    const alumno : Alumno = {
+      
+      Nombre: this.titleCasePipe.transform(this.formAlumno.value.nombre),
+      Apellidos: this.titleCasePipe.transform(this.formAlumno.value.apellidos),
+      Email: this.formAlumno.value.email,
+      FechaDeNacimiento: this.formAlumno.value.fechaDeNacimiento,
+      Avatar: "",
+      Id: this.idAlumno
+    }
+    console.log(alumno.Id)
+    this.alumnosService.put(alumno)
+    
   }
 }
