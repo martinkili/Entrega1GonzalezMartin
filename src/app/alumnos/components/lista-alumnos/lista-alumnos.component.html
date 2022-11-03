@@ -1,14 +1,27 @@
 <h1>Lista de Alumnos</h1>
 
-<mat-table [dataSource]="ELEMENT_DATA">
+<div class="d-flex justify-content-left w-100">
+    <button mat-raised-button (click)="openDialog()">Agregar Alumno</button>
+</div>
+<br>
+<mat-table [dataSource]="dataInicial">
     <ng-container matColumnDef="nombre">
         <mat-header-cell *matHeaderCellDef appFuente20>Nombre</mat-header-cell>
-        <mat-cell *matCellDef="let alumno"> {{ alumno.apellido + ' ' + alumno.nombre }} </mat-cell>
+        <mat-cell *matCellDef="let alumno"> {{ alumno.Apellidos + ' ' + alumno.Nombre }} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="edad">
-        <mat-header-cell *matHeaderCellDef appFuente20>Edad</mat-header-cell>
-        <mat-cell *matCellDef="let alumno"> {{alumno.edad}} </mat-cell>
+    <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef appFuente20>Email</mat-header-cell>
+        <mat-cell *matCellDef="let alumno"> {{alumno.Email}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="detalle">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let alumno">
+            <button mat-icon-button>
+                <mat-icon [routerLink]="'/Alumnos/'+ alumno.Id">visibility</mat-icon>
+            </button>
+        </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="editar">
@@ -24,7 +37,7 @@
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let alumno">
             <button mat-icon-button>
-                <mat-icon (click)="eliminar(alumno.id)">delete</mat-icon>   
+                <mat-icon (click)="eliminar(alumno.Id)">delete</mat-icon>   
             </button>
         </mat-cell>
     </ng-container>
@@ -33,7 +46,4 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
 </mat-table>
-<br>
-<div class="d-flex justify-content-left w-100">
-    <button mat-raised-button (click)="openDialog()">Agregar Alumno</button>
-</div>
+

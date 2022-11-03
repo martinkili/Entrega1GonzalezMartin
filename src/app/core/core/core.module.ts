@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { AdminGuard } from 'src/app/guards/admin.guard';
 import { AutenticacionGuard } from 'src/app/guards/autenticacion.guard';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ClienteHttpService } from '../services/cliente-http.service';
 import { SesionService } from '../services/sesion.service';
 
 @NgModule({
@@ -13,7 +14,8 @@ import { SesionService } from '../services/sesion.service';
   providers:[
     SesionService,
     AutenticacionGuard,
-    AdminGuard
+    AdminGuard,
+    ClienteHttpService
   ]
 })
 export class CoreModule { }

@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   login() {
 
     if (this.autenticacionService.login(this.formulario.value.usuario, this.formulario.value.contrasena)){
-      this.router.navigate(['cursos'])
+      this.router.navigate(['Cursos'])
     }else{
       alert("Usuario o contraseña inválidos")
     }

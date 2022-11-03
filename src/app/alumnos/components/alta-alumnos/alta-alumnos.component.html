@@ -3,18 +3,21 @@
   <form [formGroup]="formAlumno">
     <mat-form-field>
       <mat-label appFuente20>Apellido</mat-label>
-      <input matInput  formControlName="apellido" placeholder="Ingrese un Apellido">
+      <input matInput  formControlName="apellidos" placeholder="Ingrese un Apellido">
     </mat-form-field>
-    <br>
     <mat-form-field >
         <mat-label appFuente20>Nombre</mat-label>
         <input matInput  formControlName="nombre" placeholder="Ingrese un nombre">
       </mat-form-field>
-      <br>
+    <br>
     <mat-form-field>
-        <mat-label appFuente20>Edad</mat-label>
-        <input matInput  formControlName="edad" placeholder="Ingrese un nombre">
-      </mat-form-field>
+        <mat-label appFuente20>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Ingrese un email">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label appFuente20>Fecha de Nacimiento</mat-label>
+      <input matInput type="Date" formControlName="fechaDeNacimiento">
+    </mat-form-field>
   </form>
 </div>
 <div mat-dialog-actions>
