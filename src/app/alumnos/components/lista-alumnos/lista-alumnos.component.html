@@ -4,6 +4,11 @@
     <button mat-raised-button (click)="openDialog()">Agregar Alumno</button>
 </div>
 <br>
+<div *ngIf="dataInicial == undefined">
+    <mat-spinner style="margin:0 auto;" diameter="40"></mat-spinner>
+</div>
+
+<div *ngIf="dataInicial != undefined">
 <mat-table [dataSource]="dataInicial">
     <ng-container matColumnDef="nombre">
         <mat-header-cell *matHeaderCellDef appFuente20>Nombre</mat-header-cell>
@@ -41,4 +46,5 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
 </mat-table>
+</div>
 
