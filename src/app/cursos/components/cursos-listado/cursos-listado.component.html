@@ -1,36 +1,36 @@
-<h1>Lista de cursos</h1>
+<h1>Cursos</h1>
 
 <div class="row">
-
+    
+<div *ngIf="(cursos$ | async)  == undefined">
+    <mat-spinner style="margin:0 auto;" diameter="40"></mat-spinner>
+</div>
 
 <div *ngFor="let curso of cursos$ | async" class="col-md-3">
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>{{ curso.Nombre }}</mat-card-title>
-        <mat-card-subtitle>{{ curso.Comision }}</mat-card-subtitle>
-    </mat-card-header>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>{{ curso.Nombre }}</mat-card-title>
+            <mat-card-subtitle>Inicia el {{ curso.FechaInicio | date: 'dd/MM/YYYY' }}</mat-card-subtitle>
+        </mat-card-header>
 
-    <img mat-card-image [src]="curso.Imagen" alt="coderhouse">
+        <mat-card-content>
+            <p>Impartido por {{ curso.Profesor }}</p>
+        </mat-card-content>
 
-    <mat-card-content>
-        <p>Impartido por {{ curso.Profesor }}</p>
-        <p>Inicial el {{ curso.FechaInicio | date: 'dd/MM/YYYY' }}</p>
-        <p>Finaliza el {{ curso.FechaFin | date: 'dd/MM/YYYY' }}</p>
-    </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-icon-button [routerLink]="'/Cursos/'+curso.Id">
+                <mat-icon>visibility</mat-icon>
+            </button>
 
-    <mat-card-actions align="end">
-        <button mat-icon-button [routerLink]="'/cursos/'+curso.Id">
-            <mat-icon>visibility</mat-icon>
-        </button>
-
-        <button mat-icon-button color="primary" (click)="editarCurso(curso)">
-            <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button color="warn" (click)="eliminarCurso(curso.Id)">
-            <mat-icon>delete</mat-icon>
-        </button>
-    </mat-card-actions>
-</mat-card>
+            <button mat-icon-button color="primary" (click)="put(curso.Id)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="delete(curso.Id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+<br>
 </div>
 </div>
 

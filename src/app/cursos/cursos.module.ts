@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 
 import { CursosRoutingModule } from './cursos-routing.module';
 import { CursosListadoComponent } from './components/cursos-listado/cursos-listado.component';
@@ -21,7 +21,8 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   providers: [
-    CursosService
+    CursosService,
+    TitleCasePipe
   ]
 })
 export class CursosModule { }

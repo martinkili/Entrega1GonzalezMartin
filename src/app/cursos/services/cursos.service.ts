@@ -1,21 +1,33 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
+import { ClienteHttpService } from 'src/app/core/services/cliente-http.service';
 import { Curso } from 'src/app/models/curso';
 
 @Injectable()
 export class CursosService {
 
   constructor(
-    private http: HttpClient
+    private clienteHttp: ClienteHttpService
   ) { }
 
-  obtenerCursos(): Observable<Curso[]>{
-    return this.http.get<Curso[]>('https://635b1749aa7c3f113db5b06a.mockapi.io/cursos', {
-      headers: new HttpHeaders({
-        'content-type': 'application/json',
-        'encoding': 'uUTF-8'
-      })
-    })
+  getAll(){
+    return this.clienteHttp.getAll('Cursos')
   }
+
+  get(id: number){
+    return this.clienteHttp.get('Cursos/' + id)
+  }
+
+  post(curso: Curso){
+    return this.clienteHttp.post(curso, 'Cursos')
+  }
+
+  put(curso: Curso){
+    return this.clienteHttp.put(curso, 'Cursos/' + curso.Id)
+  }
+
+  delete(id: number){
+    return this.clienteHttp.delete('Cursos/' + id)
+  }
+
 }

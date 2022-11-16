@@ -19,7 +19,7 @@ export class ListaAlumnosComponent implements OnInit {
   listaAlumnos!: MatTableDataSource<Alumno>
 
   //ELEMENT_DATA = new MatTableDataSource(ListaAlumnos)
-  displayedColumns: string[] = ['nombre', 'detalle', 'editar', 'eliminar'];
+  displayedColumns: string[] = ['nombre', 'acciones'] //detalle', 'editar', 'eliminar'];
 
   constructor(
     private dialog: MatDialog,
@@ -36,8 +36,8 @@ export class ListaAlumnosComponent implements OnInit {
     let dialog = this.dialog.open(
       AltaAlumnosComponent,      
       {
-        width: '50%',
-        height: '50%',
+        //width: '90%',
+        //height: '70%',
         data : obj,
         id: id,
       }
@@ -55,8 +55,12 @@ export class ListaAlumnosComponent implements OnInit {
 
   
   eliminar(id: number) {
-    this.alumnosService.delete(id)
-    this.getAll()
+
+    if (confirm("Seguro de eliminar el alumno?")){
+      this.alumnosService.delete(id)
+      this.getAll()
+    }
+    
   }
 
   detalle(id: number){

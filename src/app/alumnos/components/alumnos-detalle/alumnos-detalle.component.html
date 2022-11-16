@@ -1,4 +1,9 @@
 <h1>Detalle de Alumno</h1>
+
+<div *ngIf="(alumno$ | async) == undefined">
+    <mat-spinner style="margin:0 auto;" diameter="40"></mat-spinner>
+</div>
+
 <mat-card class="example-card">
     <div *ngIf="alumno$ | async as alumno">
         <mat-card-title-group>

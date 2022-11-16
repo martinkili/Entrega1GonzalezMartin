@@ -9,7 +9,7 @@ const routes: Routes = [
   { 
     path: 'Cursos',
     loadChildren: () => import('./cursos/cursos.module').then((m) => m.CursosModule),
-    canActivate: [AutenticacionGuard]
+    //canActivate: [AutenticacionGuard]
   },
   { 
     path: 'Alumnos',
@@ -19,7 +19,7 @@ const routes: Routes = [
     path: 'Usuarios',
     loadChildren: () => import('./usuarios/usuarios.module').then((m) => m.UsuariosModule)
   },
-  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: '', redirectTo: 'Login', pathMatch: 'full'},
   { path: '**', component: PaginaNoEncontradaComponent }
 ];
 

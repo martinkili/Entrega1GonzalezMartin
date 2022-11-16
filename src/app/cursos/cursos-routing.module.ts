@@ -8,12 +8,12 @@ import { CursosEditarComponent } from './components/cursos-editar/cursos-editar.
 import { CursosListadoComponent } from './components/cursos-listado/cursos-listado.component';
 
 const routes: Routes = [
-  { path: '', component: CursosListadoComponent, //canActivate : [AutenticacionGuard],
+  { path: '', component: CursosListadoComponent,
   children: [
-    { path: 'editar', component: CursosEditarComponent },
-    { path: 'agregar', component: CursosCrearComponent },
-    { path: ':id', component: CursosDetalleComponent}
-  ]} 
+    //{ path: 'agregar', component: CursosCrearComponent },
+  ]},
+  { path: 'Editar/:id', component: CursosEditarComponent, canActivate : [AdminGuard] },
+  { path: ':id', component: CursosDetalleComponent} 
 ];
 
 @NgModule({

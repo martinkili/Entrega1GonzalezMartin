@@ -55,7 +55,6 @@ export class AltaAlumnosComponent implements OnInit {
 
   grabar() {
 
-    console.log(this.datos)
     if (this.datos != undefined)
     {
       if (this.datos.Id > 0)
@@ -85,7 +84,7 @@ export class AltaAlumnosComponent implements OnInit {
       Avatar: "",
       Id: Math.round(Math.random()*1000)
     }
-    console.log(alumno.Id)
+    
     this.alumnosService.post(alumno)
   }
 
@@ -100,7 +99,7 @@ export class AltaAlumnosComponent implements OnInit {
       Avatar: "",
       Id: this.idAlumno
     }
-    console.log(alumno.Id)
+    
     this.alumnosService.put(alumno)
     
   }

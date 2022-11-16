@@ -1,4 +1,4 @@
-<h1>Lista de Alumnos</h1>
+<h1>Alumnos</h1>
 
 <div class="d-flex justify-content-left w-100">
     <button mat-raised-button (click)="openDialog()">Agregar Alumno</button>
@@ -15,16 +15,22 @@
         <mat-cell *matCellDef="let alumno"> {{ alumno.Apellidos + ' ' + alumno.Nombre }} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="detalle">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
         <mat-cell *matCellDef="let alumno">
             <button mat-icon-button>
                 <mat-icon [routerLink]="'/Alumnos/'+ alumno.Id">visibility</mat-icon>
             </button>
+            <button mat-icon-button>
+                <mat-icon (click)="openDialog(alumno)">edit</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon (click)="eliminar(alumno.Id)">delete</mat-icon>   
+            </button>
         </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="editar">
+    <!-- <ng-container matColumnDef="editar">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let alumno">
             <button mat-icon-button>
@@ -40,7 +46,7 @@
                 <mat-icon (click)="eliminar(alumno.Id)">delete</mat-icon>   
             </button>
         </mat-cell>
-    </ng-container>
+    </ng-container> -->
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
