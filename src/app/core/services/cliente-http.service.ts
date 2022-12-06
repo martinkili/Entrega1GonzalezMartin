@@ -59,7 +59,7 @@ export class ClienteHttpService {
   put(objeto: any, endPoint: string){
     this.http.put<any>(`${environment.api}/` + endPoint, objeto).pipe(
       catchError(this.manejarError)
-    )
+    ).subscribe()
   }
 
   putReturnObservable(objeto: any, endPoint: string){
@@ -71,7 +71,7 @@ export class ClienteHttpService {
   delete(endPoint: string){
     this.http.delete<any>(`${environment.api}/` + endPoint).pipe(
       catchError(this.manejarError)
-    )
+    ).subscribe()
     alert("Registro eliminado");  
   }
 
