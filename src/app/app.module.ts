@@ -11,6 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { PaginaNoEncontradaComponent } from './core/components/pagina-no-encontrada/pagina-no-encontrada.component';
 import { MaterialModule } from './material/material.module';
 import { UsuariosListadoComponent } from './usuarios/components/usuarios-listado/usuarios-listado.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -28,7 +32,10 @@ import { UsuariosListadoComponent } from './usuarios/components/usuarios-listado
     NgbModule,
     BrowserAnimationsModule,
     CoreModule,
-    MaterialModule
+    MaterialModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

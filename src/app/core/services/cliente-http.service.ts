@@ -42,20 +42,44 @@ export class ClienteHttpService {
       })
     }).pipe(
       catchError(this.manejarError)
-    ).subscribe(console.log);
+    )
+  }
+
+  postReturnObservable(objeto: any, endPoint: string) : Observable<any>{
+    return this.http.post<any>(`${environment.api}/` + endPoint, objeto, {
+      headers: new HttpHeaders({
+        'content-type': 'application/json',
+        'encoding': 'UTF-8'
+      })
+    }).pipe(
+      catchError(this.manejarError)
+    )
   }
 
   put(objeto: any, endPoint: string){
     this.http.put<any>(`${environment.api}/` + endPoint, objeto).pipe(
       catchError(this.manejarError)
-    ).subscribe(console.log);
+    )
+  }
+
+  putReturnObservable(objeto: any, endPoint: string){
+    return this.http.put<any>(`${environment.api}/` + endPoint, objeto).pipe(
+      catchError(this.manejarError)
+    )
   }
 
   delete(endPoint: string){
     this.http.delete<any>(`${environment.api}/` + endPoint).pipe(
       catchError(this.manejarError)
-    ).subscribe(console.log);
+    )
     alert("Registro eliminado");  
+  }
+
+  deleteReturnObservable(endPoint: string){
+    return this.http.delete<any>(`${environment.api}/` + endPoint).pipe(
+      catchError(this.manejarError)
+    )
+    
   }
 
   private manejarError(error: HttpErrorResponse){

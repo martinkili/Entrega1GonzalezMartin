@@ -26,7 +26,8 @@
     <mat-nav-list>
       <a mat-list-item (click)="sidenav.toggle()" routerLink="Cursos"> Cursos </a>
       <a mat-list-item (click)="sidenav.toggle()" routerLink="Alumnos"> Alumnos </a>
-      <a mat-list-item (click)="sidenav.toggle()" routerLink="Usuarios"> Usuarios </a>
+      <a mat-list-item (click)="sidenav.toggle()" routerLink="Inscripciones"> Inscripciones </a>
+      <!-- <a mat-list-item (click)="sidenav.toggle()" routerLink="Usuarios"> Usuarios </a> -->
       <div *ngIf="sesion$ | async as sesion" >
         <div [hidden]="!sesion.islogged">
           <hr>

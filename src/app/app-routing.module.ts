@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'Usuarios',
     loadChildren: () => import('./usuarios/usuarios.module').then((m) => m.UsuariosModule)
   },
+  { 
+    path: 'Inscripciones',
+    loadChildren: () => import('./inscripciones/inscripciones.module').then((m) => m.InscripcionesModule)
+  },
   { path: '', redirectTo: 'Login', pathMatch: 'full'},
   { path: '**', component: PaginaNoEncontradaComponent }
 ];

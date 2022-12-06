@@ -18,7 +18,7 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CursosRoutingModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     CursosService,
