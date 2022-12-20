@@ -13,15 +13,15 @@ export let ListaUsuarios : Usuario[] = [
     {
         Id: 1,
         Usuario: 'usuario',
-        Contraseña: '12345678',
-        Nombre: 'Usuario1',
+        Contraseña: '1234',
+        Nombre: 'Usuario',
         Admin: false,
     },
     {
         Id: 2,
         Usuario: 'admin',
-        Contraseña: '12345678',
-        Nombre: 'Usuario2',
+        Contraseña: '1234',
+        Nombre: 'Admin',
         Admin: true,
     }
 

@@ -1,1 +1,34 @@
-<p>cursos-crear works!</p>
+<h1 mat-dialog-title>Crear Curso</h1>
+
+<div *ngIf="formulario === undefined">
+  <mat-spinner style="margin:0 auto;" diameter="40"></mat-spinner>
+</div>
+
+<div *ngIf="formulario != undefined">
+
+<div mat-dialog-content>
+  <form [formGroup]="formulario">
+    <mat-form-field >
+        <mat-label>Nombre</mat-label>
+        <input matInput  formControlName="nombre" placeholder="Ingrese un nombre">
+      </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Profesor</mat-label>
+        <input matInput formControlName="profesor" placeholder="Ingrese un profesor">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Fecha de Inicio</mat-label>
+      <!-- <input matInput type="Date" formControlName="fechaDeNacimiento"> -->
+      <input matInput [matDatepicker]="fechaInicio" formControlName="fechaInicio">
+      <mat-datepicker-toggle matSuffix [for]="fechaInicio"></mat-datepicker-toggle>
+      <mat-datepicker #fechaInicio></mat-datepicker>
+    </mat-form-field>
+  </form>
+</div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="cancelar()">Cancelar</button>
+  <button mat-button [hidden]="formulario == undefined" [disabled]="formulario != undefined && !formulario.valid === true" (click)="post()">Guardar</button>
+</div>
+

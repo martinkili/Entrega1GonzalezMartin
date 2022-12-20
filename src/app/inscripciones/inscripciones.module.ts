@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, TitleCasePipe } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { inscripcionesFeatureKey, reducer } from './state/inscripciones.reducer';

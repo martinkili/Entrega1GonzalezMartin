@@ -39,13 +39,14 @@ export class InscripcionesCrearComponent implements OnInit {
 
   ngOnInit(): void {
     
-      this.storeInscripciones.select(selectInscripciones).subscribe((inscripciones: Inscripcion[]) => {
-      this.dataSource = new MatTableDataSource<Inscripcion>(inscripciones);
-    });
+      this.storeInscripciones.select(selectInscripciones)
+                             .subscribe((inscripciones: Inscripcion[]) => 
+      {
+         this.dataSource = new MatTableDataSource<Inscripcion>(inscripciones);
+      });
     
       this.cursos$ = this.cursosService.getAll()
       this.usuarioActivo = this.sesionService.sesion.usuario
-      
       this.inscripciones$ = this.storeInscripciones.select(selectInscripciones)
       
     }

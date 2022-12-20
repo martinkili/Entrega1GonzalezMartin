@@ -5,9 +5,9 @@ import { Inscripcion } from '../models/inscripcion';
 import { environment } from 'src/environments/environment';
 import { ClienteHttpService } from 'src/app/core/services/cliente-http.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable(
+  //{providedIn: 'root'}
+)
 export class InscripcionesService {
 
   constructor(

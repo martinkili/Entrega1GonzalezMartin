@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
 import { ClienteHttpService } from 'src/app/core/services/cliente-http.service';
 import { Curso } from 'src/app/models/curso';
 

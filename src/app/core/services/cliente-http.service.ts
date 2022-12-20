@@ -42,7 +42,7 @@ export class ClienteHttpService {
       })
     }).pipe(
       catchError(this.manejarError)
-    )
+    ).subscribe()
   }
 
   postReturnObservable(objeto: any, endPoint: string) : Observable<any>{
@@ -83,6 +83,7 @@ export class ClienteHttpService {
   }
 
   private manejarError(error: HttpErrorResponse){
+
     if(error.error instanceof ErrorEvent){
       console.warn('Error del lado del cliente', error.error.message);
     }else{

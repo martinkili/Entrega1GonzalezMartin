@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AdminGuard } from 'src/app/guards/admin.guard';
+import { SesionService } from 'src/app/core/services/sesion.service';
 import { Curso } from 'src/app/models/curso';
+import { Usuario } from 'src/app/models/usuario';
 import { CursosService } from '../../services/cursos.service';
 
 @Component({
@@ -13,14 +14,16 @@ import { CursosService } from '../../services/cursos.service';
 export class CursosListadoComponent implements OnInit {
 
   cursos$!: Observable<Curso[]>
+  usuarioActivo?: Usuario;
 
   constructor(
     private cursoService: CursosService,
-    private router: Router,
-    private adminGuard: AdminGuard
+    private sesionService: SesionService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.usuarioActivo = this.sesionService.sesion.usuario
     this.getAll();
   }
 
@@ -33,10 +36,19 @@ export class CursosListadoComponent implements OnInit {
   }
 
   delete(id: number){
+
+   if (this.usuarioActivo?.Admin){
+
     if (confirm("Seguro de eliminar el curso?")){
       this.cursoService.delete(id)
       this.getAll()
     }
+
+   }else{
+      alert("El usuario debe ser administrador")
+   }
+
+    
   }
 
 }

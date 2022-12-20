@@ -6,6 +6,7 @@ import { AltaAlumnosComponent } from '../alta-alumnos/alta-alumnos.component';
 import { AlumnosService } from '../../services/alumnos.service';
 import { AlumnosDetalleComponent } from '../alumnos-detalle/alumnos-detalle.component';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/internal/Observable';
 
 
 @Component({
@@ -16,9 +17,6 @@ import { Router } from '@angular/router';
 export class ListaAlumnosComponent implements OnInit {
 
   dataInicial!: Alumno[];
-  listaAlumnos!: MatTableDataSource<Alumno>
-
-  //ELEMENT_DATA = new MatTableDataSource(ListaAlumnos)
   displayedColumns: string[] = ['nombre', 'acciones'] //detalle', 'editar', 'eliminar'];
 
   constructor(
@@ -36,21 +34,22 @@ export class ListaAlumnosComponent implements OnInit {
     let dialog = this.dialog.open(
       AltaAlumnosComponent,      
       {
-        //width: '90%',
-        //height: '70%',
         data : obj,
         id: id,
       }
     )
-
+      
     dialog.afterClosed().subscribe(() => this.getAll())
 
   }
       
   getAll(){
+
+    this.dataInicial = [];
     this.alumnosService.getAll().subscribe((data) => 
-    (this.dataInicial = data.sort((a, b) => (a.Apellidos < b.Apellidos ? -1 : 1)))
+      (this.dataInicial = data)
     );
+
   }
 
   
